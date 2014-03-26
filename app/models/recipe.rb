@@ -10,6 +10,8 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  # calls the above method twice, once with the new skill and once without
+  # and subtracts one result from the other
   def self.find_newly_unlocked_recipes(*prior_skill_ids, new_skill_id)
     self.find_recipes_that_require_any_of_these_skills(*(prior_skill_ids + [new_skill_id])) - self.find_recipes_that_require_any_of_these_skills(*prior_skill_ids)
   end
