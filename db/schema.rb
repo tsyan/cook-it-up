@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20140326141914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "practices", force: true do |t|
+    t.integer "skill_id"
+    t.integer "recipe_id"
+  end
+
+  add_index "practices", ["recipe_id"], name: "index_practices_on_recipe_id", using: :btree
+  add_index "practices", ["skill_id"], name: "index_practices_on_skill_id", using: :btree
+
   create_table "recipes", force: true do |t|
     t.text     "name"
     t.text     "url"
@@ -28,11 +36,6 @@ ActiveRecord::Schema.define(version: 20140326141914) do
     t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "skills_recipes", force: true do |t|
-    t.integer "skill_id"
-    t.integer "recipe_id"
   end
 
 end
