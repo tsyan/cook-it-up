@@ -13,10 +13,13 @@ class CreateSkillsAndRecipes < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :skills_recipes do |t|
+    create_table :recipes_skills do |t|
       t.belongs_to :skill
       t.belongs_to :recipe
     end
+
+    add_index :recipes_skills, :skill_id
+    add_index :recipes_skills, :recipe_id
 
   end
 end

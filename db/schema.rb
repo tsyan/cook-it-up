@@ -23,16 +23,19 @@ ActiveRecord::Schema.define(version: 20140326141914) do
     t.datetime "updated_at"
   end
 
+  create_table "recipes_skills", force: true do |t|
+    t.integer "skill_id"
+    t.integer "recipe_id"
+  end
+
+  add_index "recipes_skills", ["recipe_id"], name: "index_recipes_skills_on_recipe_id", using: :btree
+  add_index "recipes_skills", ["skill_id"], name: "index_recipes_skills_on_skill_id", using: :btree
+
   create_table "skills", force: true do |t|
     t.text     "name"
     t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "skills_recipes", force: true do |t|
-    t.integer "skill_id"
-    t.integer "recipe_id"
   end
 
 end
