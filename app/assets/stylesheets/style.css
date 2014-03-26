@@ -1,0 +1,11 @@
+div#all-skills {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /*border: 1px solid blue;*/
+}
+
+div.skill-div {
+  display: inline-block;
+  margin-left: 20px;
+  /*border: 1px solid red;*/
+}

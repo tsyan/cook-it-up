@@ -1,7 +1,9 @@
 <h2>Select the skills you already know</h2>
 
-<% @skills.each do |skill| %>
-  <div>
-    <button type="button" class="skill-button" id="<%= skill.name.downcase %>-button"><%= skill.name %></button>
-  </div>
-<% end %>
+<div id="all-skills">
+  <% @skills.each do |skill| %>
+    <div class="skill-div">
+      <button type="button" class="skill-button btn btn-lg btn-primary" id="<%= skill.name.downcase %>-button"><%= skill.name %></button>
+    </div>
+  <% end %>
+</div>
