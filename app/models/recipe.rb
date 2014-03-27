@@ -3,10 +3,10 @@ class Recipe < ActiveRecord::Base
   has_many :skills, through: :practices
 
   has_attached_file :photo, styles: {
-      thumb: '100x100>',
-      square: '200x200#',
-      medium: '300x300>',
-      tile: '220x255>'
+      # thumb: '100x100>',
+      # square: '200x200#',
+      # medium: '300x300>',
+      tile: '255x220'
   }
 
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
@@ -23,5 +23,9 @@ class Recipe < ActiveRecord::Base
   # and subtracts one result from the other
   def self.find_newly_unlocked_recipes(*prior_skill_ids, new_skill_id)
     self.find_recipes_that_require_any_of_these_skills(*(prior_skill_ids + [new_skill_id])) - self.find_recipes_that_require_any_of_these_skills(*prior_skill_ids)
+  end
+
+  def photo_url
+    photo.url(:tile)
   end
 end

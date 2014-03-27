@@ -10,6 +10,7 @@ class CreateSkillsAndRecipes < ActiveRecord::Migration
     create_table :recipes do |t|
       t.text :name, index: true
       t.text :url
+      t.text :photo_url
       t.timestamps
     end
 

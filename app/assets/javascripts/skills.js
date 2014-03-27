@@ -76,7 +76,7 @@ Recipes.renderCurrentRecipes = function(recipes) {
 
     // give recipe a background image
     $('#recipe-'+i)
-      .css('background-color','lightgray');
+      .css('background-image','url('+recipes[i].photo_url+')');
   }
 
   // fade-in the new div
