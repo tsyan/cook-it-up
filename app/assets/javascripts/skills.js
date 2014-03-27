@@ -50,10 +50,43 @@ Recipes.getCurrentRecipes = function(event) {
 };
 
 Recipes.renderCurrentRecipes = function(recipes) {
-  $('.recipe-square').empty();
+  // if div already exists for some reason, empty it
+  $('#try-recipes').empty();
+
+  // create new #try-recipes div and append to <body>
+  $('<div>')
+    .attr('id','try-recipes')
+    .appendTo('body')
+    .append('<h2>Try a recipe!</h2>');
+
+  // loop through each returned recipe
   for (var i = 0; i < recipes.length; i++) {
-    $("#recipe-" + i).append('<p>' + recipes[i].name + '</p>');
+
+    // create new #recipe-x div and append to #try-recipes
+    $('<div>')
+      .addClass('recipe-square')
+      .attr('id','recipe-'+i)
+      .appendTo('#try-recipes');
+
+    // give recipe a name
+    $('<p>')
+      .addClass('recipe-name')
+      .text(recipes[i].name)
+      .appendTo('#recipe-'+i);
+
+    // give recipe a background image
+    $('#recipe-'+i)
+      .css('background-color','lightgray')
+      .css('color', 'white');
+
+    // populate the recipe card with name and picture
+    // $("#recipe-" + i)
+      // .append('<p>' + recipes[i].name + '</p>');
   }
+
+  // fade-in the new div
   $('#try-recipes').css({ display: "block", opacity: 0 }).animate({ opacity: 1 }, 400);
+
+  // collapse the old div
   $('#all-skills').animate({height: 0, display: "none"}, 700);
 };
