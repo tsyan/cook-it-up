@@ -3,7 +3,7 @@
 <div id="all-skills">
   <% @skills.each do |skill| %>
     <div class="skill-div">
-      <button type="button" class="skill-button btn btn-lg btn-primary" id="<%= skill.name.downcase %>-button"><%= skill.name %></button>
+      <button type="button" class="skill-button btn btn-lg btn-primary" id="<%= skill.name.downcase %>-button" data-skill-id="<%= skill.id %>"><%= skill.name %></button>
     </div>
   <% end %>
 
