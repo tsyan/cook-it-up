@@ -76,12 +76,7 @@ Recipes.renderCurrentRecipes = function(recipes) {
 
     // give recipe a background image
     $('#recipe-'+i)
-      .css('background-color','lightgray')
-      .css('color', 'white');
-
-    // populate the recipe card with name and picture
-    // $("#recipe-" + i)
-      // .append('<p>' + recipes[i].name + '</p>');
+      .css('background-color','lightgray');
   }
 
   // fade-in the new div
