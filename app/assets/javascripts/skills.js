@@ -19,15 +19,14 @@ Skills.selectSkill = function(event) {
 };
 
 Skills.addSkill = function(button) {
-  Skills.currentSkills.push(button.attr('data-skill-id'));
+  var this_skill = button.attr('data-skill-id');
+  Skills.currentSkills.push(this_skill);
   console.log("Skills.currentSkills:" + Skills.currentSkills);
 };
 
 Skills.removeSkill = function(button) {
-  var this_skill = Skills.currentSkills.indexOf(button.attr('data-skill-id'));
-  // change this line
-  // remove element from array by index (instead of pop)
-  Skills.currentSkills.pop(this_skill);
+  var this_skill = $.inArray(button.attr('data-skill-id'), Skills.currentSkills);
+  Skills.currentSkills.splice(this_skill, 1);
   console.log("Skills.currentSkills:" + Skills.currentSkills);
 };
 
@@ -51,9 +50,10 @@ Recipes.getCurrentRecipes = function(event) {
 };
 
 Recipes.renderCurrentRecipes = function(recipes) {
-  $('#try-recipes').removeClass("hidden");
   $('.recipe-square').empty();
   for (var i = 0; i < recipes.length; i++) {
     $("#recipe-" + i).append('<p>' + recipes[i].name + '</p>');
   }
+  $('#try-recipes').css({ display: "block", opacity: 0 }).animate({ opacity: 1 }, 400);
+  $('#all-skills').animate({height: 0, display: "none"}, 700);
 };

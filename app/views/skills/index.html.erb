@@ -1,6 +1,6 @@
-<h2>Select the skills you already know</h2>
-
 <div id="all-skills">
+  <h2>Select the skills you already know</h2>
+
   <% @skills.each do |skill| %>
     <div class="skill-div">
       <button type="button" class="skill-button btn btn-lg btn-primary" id="<%= skill.name.downcase %>-button" data-skill-id="<%= skill.id %>"><%= skill.name %></button>
@@ -11,7 +11,8 @@
 
 </div>
 
-<div id="try-recipes" class="hidden">
+<div id="try-recipes">
+  <h2>Try a recipe</h2>
   <div id="row-1" class="recipe-row">
     <div id="recipe-0" class="recipe-square"></div>
     <div id="recipe-1" class="recipe-square"></div>
