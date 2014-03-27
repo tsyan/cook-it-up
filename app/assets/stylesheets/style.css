@@ -1,0 +1,36 @@
+body {
+  padding-left: 20px;
+}
+
+h1 {
+  font-family: 'Berkshire Swash', 'Helvetica Neue', 'Georgia';
+  font-size: 80px;
+  letter-spacing: -1.8px;
+}
+
+h1 span {
+  margin-right: 8px;
+}
+
+div#all-skills {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+div.skill-div {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.btn {
+  outline: none !important;
+}
+
+.btn-primary:focus, .btn-primary:hover {
+  background-color: #428bca;
+}
+
+#skills-done {
+  width: 574px;
+  margin-top: 20px;
+}
