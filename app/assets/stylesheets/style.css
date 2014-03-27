@@ -29,3 +29,8 @@ div.skill-div {
 .btn-primary:focus, .btn-primary:hover {
   background-color: #428bca;
 }
+
+#skills-done {
+  width: 574px;
+  margin-top: 20px;
+}
