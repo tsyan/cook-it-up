@@ -15,8 +15,7 @@
       <td><%= recipe.skills.map { |skill| skill.name }.join(", ") %></td>
       <td><a href="<%= recipe.url %>"><%= recipe.url.truncate(50) %></a></td>
       <td>
-        <%= image_tag recipe.photo.url(:tile) %>
-        <br>
+        <%= image_tag recipe.photo.url(:tile) %> <br>
         <%= link_to "Upload photo", upload_photo_path(recipe) %>
       </td>
     </tr>

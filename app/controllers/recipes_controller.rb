@@ -25,7 +25,6 @@ class RecipesController < ApplicationController
   def save_photo
     @recipe = Recipe.find(params[:id])
     @recipe.update_attributes(photo: params[:recipe][:photo])
-    # binding.pry
     @recipe.save
     redirect_to recipes_path
   end
