@@ -25,11 +25,20 @@ Recipes.getCurrentRecipes = function(event) {
   .done(function(data) {
     console.log("success");
     console.log(data);
-    var HTML = '<p>' + data[0].name + '</p>';
-    $('#first-recipe').append(HTML);
+    Recipes.renderCurrentRecipes(data);
   })
   .fail(function() {
     console.log("error");
   });
   return false;
+};
+
+Recipes.renderCurrentRecipes = function(recipes) {
+  // var HTML = '<p>' + recipes[0].name + '</p>';
+
+  // $('#recipe-1').append(HTML);
+
+  for (var i = 0; i < recipes.length; i++) {
+    $("#recipe-" + i).append('<p>' + recipes[i].name + '</p>');
+  }
 };
