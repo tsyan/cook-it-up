@@ -67,3 +67,19 @@ div.skill-div {
 .hidden {
   display:none;
 }
+
+/*recipes index*/
+
+.table > tbody > tr > th
+{
+  border-top: none;
+  border-bottom: 1px solid #ddd;;
+}
+
+.table > tbody > tr > td {
+  border-top: none;
+}
+
+.input_form {
+  padding-right: 20px;
+}

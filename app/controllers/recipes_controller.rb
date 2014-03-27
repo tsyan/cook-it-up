@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   end
 
   def index
+    @recipes = Recipe.all
   end
 
   def display
@@ -15,6 +16,18 @@ class RecipesController < ApplicationController
       params[:known_skills][3].to_i,
       params[:known_skills][4].to_i)
     render json: @recipes
+  end
+
+  def new_photo
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def save_photo
+    @recipe = Recipe.find(params[:id])
+    @recipe.update_attributes(photo: params[:recipe][:photo])
+    # binding.pry
+    @recipe.save
+    redirect_to recipes_path
   end
 
 end
