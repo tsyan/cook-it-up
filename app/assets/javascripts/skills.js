@@ -20,7 +20,7 @@ Recipes.getCurrentRecipes = function(event) {
     url: '/skills',
     type: 'POST',
     dataType: 'JSON',
-    data: {param1: 'value1'}
+    data: {known_skills: [1,5]}
   })
   .done(function(data) {
     console.log("success");
@@ -34,11 +34,9 @@ Recipes.getCurrentRecipes = function(event) {
 };
 
 Recipes.renderCurrentRecipes = function(recipes) {
-  // var HTML = '<p>' + recipes[0].name + '</p>';
-
-  // $('#recipe-1').append(HTML);
-
+  $('#try-recipes').toggleClass("hidden");
   for (var i = 0; i < recipes.length; i++) {
+    $("#recipe-" + i).empty();
     $("#recipe-" + i).append('<p>' + recipes[i].name + '</p>');
   }
 };

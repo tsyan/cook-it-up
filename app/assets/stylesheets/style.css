@@ -34,3 +34,21 @@ div.skill-div {
   width: 574px;
   margin-top: 20px;
 }
+
+.recipe-row {
+  width: 1000px;
+  margin: 20px;
+  margin-left: 0px;
+  /*border: 1px solid blue;*/
+}
+
+.recipe-square {
+  display: inline-block;
+  width: 200px;
+  margin: 10px;
+  /*border: 1px solid red;*/
+}
+
+.hidden {
+  display:none;
+}
