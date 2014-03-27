@@ -1,13 +1,40 @@
-<h2>Select the skills you already know</h2>
-
 <div id="all-skills">
+  <h2>Select the skills you already know</h2>
+
   <% @skills.each do |skill| %>
     <div class="skill-div">
-      <button type="button" class="skill-button btn btn-lg btn-primary" id="<%= skill.name.downcase %>-button"><%= skill.name %></button>
+      <button type="button" class="skill-button btn btn-lg btn-primary" id="<%= skill.name.downcase %>-button" data-skill-id="<%= skill.id %>"><%= skill.name %></button>
     </div>
   <% end %>
 
-  <button type="button" class="btn btn-block btn-lg btn-danger" id="skills-done">Done!</button>
+  <button type="button" class="btn btn-block btn-lg btn-danger" id="skills-done-button">Done!</button>
 
 </div>
 
+<div id="try-recipes">
+  <h2>Try a recipe</h2>
+  <div id="row-1" class="recipe-row">
+    <div id="recipe-0" class="recipe-square"></div>
+    <div id="recipe-1" class="recipe-square"></div>
+    <div id="recipe-2" class="recipe-square"></div>
+    <div id="recipe-3" class="recipe-square"></div>
+  </div>
+  <div id="row-2" class="recipe-row">
+    <div id="recipe-4" class="recipe-square"></div>
+    <div id="recipe-5" class="recipe-square"></div>
+    <div id="recipe-6" class="recipe-square"></div>
+    <div id="recipe-7" class="recipe-square"></div>
+  </div>
+  <div id="row-3" class="recipe-row">
+    <div id="recipe-8" class="recipe-square"></div>
+    <div id="recipe-9" class="recipe-square"></div>
+    <div id="recipe-10" class="recipe-square"></div>
+    <div id="recipe-11" class="recipe-square"></div>
+  </div>
+  <div id="row-4" class="recipe-row">
+    <div id="recipe-12" class="recipe-square"></div>
+    <div id="recipe-13" class="recipe-square"></div>
+    <div id="recipe-14" class="recipe-square"></div>
+    <div id="recipe-15" class="recipe-square"></div>
+  </div>
+</div>

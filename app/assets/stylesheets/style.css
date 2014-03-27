@@ -30,7 +30,33 @@ div.skill-div {
   background-color: #428bca;
 }
 
-#skills-done {
+#all-skills {
+  overflow: hidden ;/* so animation doesn't jump */
+}
+
+#skills-done-button {
   width: 574px;
   margin-top: 20px;
+}
+
+#try-recipes {
+  display:none;
+}
+
+.recipe-row {
+  width: 1000px;
+  margin: 20px;
+  margin-left: 0px;
+  /*border: 1px solid blue;*/
+}
+
+.recipe-square {
+  display: inline-block;
+  width: 200px;
+  margin: 10px;
+  /*border: 1px solid red;*/
+}
+
+.hidden {
+  display:none;
 }
