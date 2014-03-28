@@ -7,6 +7,7 @@ CookItUp::Application.routes.draw do
 
   post 'known_recipes', to: 'recipes#display'
   post 'unknown_skills', to: 'skills#display'
+  post 'unlocked_recipes', to: 'recipes#unlocked'
 
   get 'recipes/:id/photo_upload', to: 'recipes#new_photo', as: 'upload_recipe_photo'
   patch 'recipes/:id/photo_upload', to: 'recipes#save_photo', as: 'recipe_photo'

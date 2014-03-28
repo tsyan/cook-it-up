@@ -165,7 +165,8 @@ Skills.renderUnknownSkills = function(skills) {
   for (var i = 0; i < skills.length; i++) {
 
     // create new link to skill url and append to #learn-skills
-    $('<a>')
+    // $('<a>')
+    $('<div>')
       .attr('id','skill-'+i+'-url')
       .attr('href', skills[i].url)
       .appendTo('#learn-skills');
@@ -174,6 +175,7 @@ Skills.renderUnknownSkills = function(skills) {
     $('<div>')
       .addClass('skill-block')
       .attr('id','skill-'+i)
+      .attr('data-skill-id',i+2)
       .appendTo('#skill-'+i+'-url');
 
     // give skill a name
@@ -196,6 +198,15 @@ Skills.renderUnknownSkills = function(skills) {
     $('#learn-skills')
       .css({ display: "block", opacity: 0})
       .animate({ opacity: 1 }, 400);
+
+    // add an event listener for each skill
+    !function outer(ii){
+      $('#skill-'+i).click( function inner(event){
+        console.log('You clicked on me! ' + 'skill: ' + ii );
+        Skills.addSkill($(this));
+        Skills.getNewRecipes();
+      });
+    }(i);
   }
 
   // $('.skill-block').click(Skill.getNewRecipes);
@@ -208,6 +219,22 @@ Skills.renderUnknownSkills = function(skills) {
 
 };
 
-Skill.getNewRecipes = function() {
-  alert('hi');
+Skills.getNewRecipes = function() {
+  event.preventDefault();
+  $.ajax({
+    url: '/unlocked_recipes',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {known_skills: Skills.knownSkills}
+  })
+  .done(function(data) {
+    console.log("success! retrieved newly unlocked recipes");
+    console.log(data);
+    // Recipes.renderKnownRecipes(data);
+  })
+  .fail(function() {
+    console.log("error! could not retrieve newly unlocked recipes");
+  });
+  return false;
 };
+
