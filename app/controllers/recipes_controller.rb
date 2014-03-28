@@ -18,6 +18,16 @@ class RecipesController < ApplicationController
     render json: @recipes.to_json(only: [:id, :name, :url, :photo], methods: [:photo_url])
   end
 
+  def unlocked
+    @recipes = Recipe.find_newly_unlocked_recipes(
+      params[:known_skills][0].to_i,
+      params[:known_skills][1].to_i,
+      params[:known_skills][2].to_i,
+      params[:known_skills][3].to_i,
+      params[:known_skills][4].to_i)
+    render json: @recipes.to_json(only: [:id, :name, :url, :photo], methods: [:photo_url])
+  end
+
   def new_photo
     @recipe = Recipe.find(params[:id])
   end

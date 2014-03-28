@@ -118,6 +118,7 @@ div.skill-div {
   line-height: 190px;
   color: white;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.9), 5px 5px 19px rgba(0,0,0,0.7);
+  cursor: pointer;
 }
 
 .num-unlocked-recipes {
