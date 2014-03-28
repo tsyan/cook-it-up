@@ -4,7 +4,7 @@ var Skills = Skills || { knownSkills: [], unknownSkills: ["1","2","3","4","5"] }
 $(document).ready(function() {
   $('.skill-button').click(Skills.selectSkill);
   $('#skills-done-button').click(Recipes.getKnownRecipes);
-  $('#skills-done-button').click(Skills.getUnknownSkills);
+  // $('#skills-done-button').click(Skills.getUnknownSkills);
 });
 
 Skills.selectSkill = function(event) {
@@ -105,16 +105,18 @@ Recipes.renderKnownRecipes = function(recipes) {
     // fade-in the new div
     $('#try-recipes')
       .css({ display: "block", opacity: 0 })
-      .animate({ opacity: 1 }, 400);
+      .animate({ opacity: 1, height: 'auto' }, 400);
 
     // collapse the old div
-    $('#all-skills').animate({ height: 0, display: "none" }, 700);
+    // $('#all-skills').animate({ height: 0, display: "none" }, 700);
   }
+
+    Skills.getUnknownSkills();
 
 };
 
-Skills.getUnknownSkills = function(event) {
-  event.preventDefault();
+Skills.getUnknownSkills = function() {
+  // event.preventDefault();
   $.ajax({
       url: '/unknown_skills',
       type: 'POST',
@@ -129,7 +131,7 @@ Skills.getUnknownSkills = function(event) {
     .fail(function() {
       console.log("error! could not retrieve skills");
     });
-    return false;
+    // return false;
 };
 
 Skills.renderUnknownSkills = function(skills) {
@@ -139,18 +141,18 @@ Skills.renderUnknownSkills = function(skills) {
   // create new #learn-skills div
   $('<div>')
     .attr('id', 'learn-skills')
-    .appendTo('div.container');
+    .insertAfter('#try-recipes');
 
   // create new section header
   $('<h2>')
     .addClass('section-header')
-    .text('Learn a new skill')
+    .text('Learn a new cooking skill')
     .appendTo('#learn-skills');
 
   // create new section description
   $('<h3>')
     .addClass('section-desc')
-    .text("Each skill unlocks new recipes.")
+    .text("Each skill unlocks a new set of recipes!")
     .appendTo('#learn-skills');
 
   //loop through each returned skill
