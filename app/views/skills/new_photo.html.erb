@@ -1,8 +1,8 @@
-<h2><%= @recipe.name %></h2>
+<h2><%= @skill.name %></h2>
 
 <h2>Upload a Photo</h2>
 
-<%= form_for @recipe, url: recipe_photo_path, html: { method: :patch } do |f| %>
+<%= form_for @skill, url: skill_photo_path, html: { method: :patch } do |f| %>
 <%= f.label :photo %>
 <%= f.file_field :photo %>
 <br><br>

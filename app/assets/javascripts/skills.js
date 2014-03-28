@@ -167,13 +167,13 @@ Skills.renderUnknownSkills = function(skills) {
       .css({ display: "block", opacity: 0})
       .animate({ opacity: 1 }, 400);
 
-    // set event listener for hovering over skill block
-    // this isn't working at all yet
-    $('.skill-block').hover(function(event) {
-      // debugger
-      $(event.target.firstChild).animate({ 'color': 'red' }, 500);
-    });
+   }
 
-  }
+   // set event listener for hovering over skill block
+   // this isn't working at all yet
+   $('.skill-block').hover(function(event) {
+     // debugger
+     $(event.target.firstChild).animate({ 'color': 'red' }, 500);
+   });
 
 };
