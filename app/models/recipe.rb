@@ -6,7 +6,7 @@ class Recipe < ActiveRecord::Base
       # thumb: '100x100>',
       # square: '200x200#',
       # medium: '300x300>',
-      tile: '255x220'
+      tile: '225x260^' # width by height
   }
 
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
@@ -25,7 +25,9 @@ class Recipe < ActiveRecord::Base
     self.find_recipes_that_require_any_of_these_skills(*(prior_skill_ids + [new_skill_id])) - self.find_recipes_that_require_any_of_these_skills(*prior_skill_ids)
   end
 
+  # this is an instance method, called on a single recipe
+  # therefore it's not .self
   def photo_url
-    photo.url(:tile)
+    self.photo.url(:tile) # but now, self is the recipe
   end
 end

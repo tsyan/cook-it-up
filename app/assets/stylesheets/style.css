@@ -43,25 +43,21 @@ div.skill-div {
   display:none;
 }
 
-.recipe-row {
-  width: 1000px;
-  margin: 20px;
-  margin-left: 0px;
-  /*border: 1px solid blue;*/
-}
-
 .recipe-square {
   display: inline-block;
   overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: LightGray;
+  box-sizing: border-box;
   width: 225px;
   height: 260px;
   margin: 10px;
   padding: 5px;
   font-size: 20px;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 8px;
   color: black;
-
 }
 
 .hidden {
@@ -82,4 +78,8 @@ div.skill-div {
 
 .input_form {
   padding-right: 20px;
+}
+
+.photo-preview {
+  width: 100px;
 }
