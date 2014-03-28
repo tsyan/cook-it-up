@@ -16,7 +16,7 @@
       <td><a href="<%= recipe.url %>"><%= recipe.url.truncate(50) %></a></td>
       <td>
         <%= image_tag recipe.photo.url(:tile), class: "photo-preview" %> <br>
-        <%= link_to "Upload photo", upload_photo_path(recipe) %>
+        <%= link_to "Upload photo", upload_recipe_photo_path(recipe) %>
       </td>
     </tr>
   <% end %>

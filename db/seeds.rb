@@ -1,15 +1,20 @@
 puts "seeding database..."
 
 Skill.create(name: "Boiling",
-                url: "http://www.wikihow.com/Boil-Vegetables")
+                url: "http://www.wikihow.com/Boil-Vegetables",
+                photo: File.open("#{Rails.root}/app/assets/images/skill-01.jpg"))
 Skill.create(name: "Chopping",
-                url: "http://www.wikihow.com/Chop-Vegetables-Very-Quickly")
+                url: "http://www.wikihow.com/Chop-Vegetables-Very-Quickly",
+                photo: File.open("#{Rails.root}/app/assets/images/skill-02.jpg"))
 Skill.create(name: "Frying",
-                url: "http://www.wikihow.com/Stir-Fry")
+                url: "http://www.wikihow.com/Stir-Fry",
+                photo: File.open("#{Rails.root}/app/assets/images/skill-03.jpg"))
 Skill.create(name: "Baking",
-                url: "http://www.wikihow.com/Bake")
+                url: "http://www.wikihow.com/Bake",
+                photo: File.open("#{Rails.root}/app/assets/images/skill-04.jpg"))
 Skill.create(name: "Pureeing",
-                url: "http://www.wikihow.com/Use-a-Blender")
+                url: "http://www.wikihow.com/Use-a-Blender",
+                photo: File.open("#{Rails.root}/app/assets/images/skill-05.jpg"))
 
 puts "seeded skills"
 

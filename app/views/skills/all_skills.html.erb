@@ -1,0 +1,22 @@
+<h2>All Skills</h2>
+
+<table class="table">
+
+  <tr>
+    <th>Name</th>
+    <th>URL</th>
+    <th>Photo</th>
+  </tr>
+
+  <% @skills.each do |skill| %>
+    <tr>
+      <td><%= skill.name %></td>
+      <td><a href="<%= skill.url %>"><%= skill.url.truncate(50) %></a></td>
+      <td>
+        <%= image_tag skill.photo_url, class: "photo-preview" %> <br>
+        <%= link_to "Upload photo", upload_skill_photo_path(skill) %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

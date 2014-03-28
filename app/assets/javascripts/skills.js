@@ -60,10 +60,10 @@ Recipes.renderKnownRecipes = function(recipes) {
   // if div already exists for some reason, empty it
   $('#try-recipes').empty();
 
-  // create new #try-recipes div and append to <body>
+  // create new #try-recipes div
   $('<div>')
     .attr('id','try-recipes')
-    .appendTo('body');
+    .appendTo('div.container');
 
   // create new section header
   $('<h2>')
@@ -101,22 +101,16 @@ Recipes.renderKnownRecipes = function(recipes) {
     // give recipe a background image
     $('#recipe-'+i)
       .css('background-image','url('+recipes[i].photo_url+')');
+
+    // fade-in the new div
+    $('#try-recipes')
+      .css({ display: "block", opacity: 0 })
+      .animate({ opacity: 1 }, 400);
+
+    // collapse the old div
+    $('#all-skills').animate({ height: 0, display: "none" }, 700);
   }
 
-  // fade-in the new div
-  $('#try-recipes')
-    .css({ display: "block", opacity: 0 })
-    .animate({ opacity: 1 }, 400);
-
-  // collapse the old div
-  $('#all-skills').animate({ height: 0, display: "none" }, 700);
-
-  // set event listener for hovering over recipe tile
-  // this isn't working at all yet
-  $('.recipe-tile').hover(function(event) {
-    // debugger
-    $(event.target.firstChild).animate({ 'color': 'red' }, 500);
-  });
 };
 
 Skills.getUnknownSkills = function(event) {
@@ -142,10 +136,10 @@ Skills.renderUnknownSkills = function(skills) {
   // if div already exists for some reason, empty it
   $('#learn-skills').empty();
 
-  // create new #learn-skills div and append to <body>
+  // create new #learn-skills div
   $('<div>')
     .attr('id', 'learn-skills')
-    .appendTo('body');
+    .appendTo('div.container');
 
   // create new section header
   $('<h2>')
@@ -181,21 +175,13 @@ Skills.renderUnknownSkills = function(skills) {
       .appendTo('#skill-'+i);
 
     // give skill a background image
-    // $('#skill-'+i)
-    //   .css('background-image','url(' + skills[i].photo_url + ')');
+    $('#skill-'+i)
+      .css('background-image','url(' + skills[i].photo_url + ')');
 
+    // fade-in the new div
+    $('#learn-skills')
+      .css({ display: "block", opacity: 0})
+      .animate({ opacity: 1 }, 400);
   }
-
-  // fade-in the new div
-  $('#learn-skills')
-    .css({ display: "block", opacity: 0})
-    .animate({ opacity: 1 }, 400);
-
-  // set event listener for hovering over skill block
-  // this isn't working at all yet
-  $('.skill-block').hover(function(event) {
-    // debugger
-    $(event.target.firstChild).animate({ 'color': 'red' }, 500);
-  });
 
 };
