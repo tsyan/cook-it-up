@@ -13,6 +13,8 @@ gem 'time_difference' # Get time difference between two dates
 gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'paperclip'
+gem 'aws-sdk' # amazon cloud storage
 
 
 group :production do
