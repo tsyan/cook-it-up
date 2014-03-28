@@ -6,7 +6,7 @@ class Skill < ActiveRecord::Base
       # thumb: '100x100>',
       # square: '200x200#',
       # medium: '300x300>',
-      block: '1000x300>' # width by height
+      block: '1000x300^' # width by height
     }
 
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/

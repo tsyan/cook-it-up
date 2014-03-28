@@ -159,8 +159,8 @@ Skills.renderUnknownSkills = function(skills) {
       .appendTo('#skill-'+i);
 
     // give skill a background image
-    // $('#skill-'+i)
-    //   .css('background-image','url(' + skills[i].photo_url + ')');
+    $('#skill-'+i)
+      .css('background-image','url(' + skills[i].photo_url + ')');
 
     // fade-in the new div
     $('#learn-skills')
