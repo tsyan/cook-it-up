@@ -60,6 +60,23 @@ div.skill-div {
   color: black;
 }
 
+.skill-block {
+  display: block;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: LightGray;
+  box-sizing: border-box;
+  width: 90%;
+  height: 300px;
+  margin: 20px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  color: black;
+}
+
 .hidden {
   display:none;
 }

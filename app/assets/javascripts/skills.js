@@ -37,25 +37,6 @@ Skills.removeSkill = function(button) {
   console.log("Skills.unknownSkills:" + Skills.unknownSkills);
 };
 
-Skills.getUnknownSkills = function(event) {
-  event.preventDefault();
-  $.ajax({
-      url: '/unknown_skills',
-      type: 'POST',
-      dataType: 'JSON',
-      data: {unknown_skills: Skills.unknownSkills}
-    })
-    .done(function(data) {
-      console.log("success! retrieved unknown skills");
-      console.log(data);
-      // Recipes.renderKnownRecipes(data);
-    })
-    .fail(function() {
-      console.log("error! could not retrieve skills");
-    });
-    return false;
-};
-
 Recipes.getKnownRecipes = function(event) {
   event.preventDefault();
   $.ajax({
@@ -110,4 +91,61 @@ Recipes.renderKnownRecipes = function(recipes) {
 
   // collapse the old div
   $('#all-skills').animate({height: 0, display: "none"}, 700);
+};
+
+Skills.getUnknownSkills = function(event) {
+  event.preventDefault();
+  $.ajax({
+      url: '/unknown_skills',
+      type: 'POST',
+      dataType: 'JSON',
+      data: {unknown_skills: Skills.unknownSkills}
+    })
+    .done(function(data) {
+      console.log("success! retrieved unknown skills");
+      console.log(data);
+      Skills.renderUnknownSkills(data);
+    })
+    .fail(function() {
+      console.log("error! could not retrieve skills");
+    });
+    return false;
+};
+
+Skills.renderUnknownSkills = function(skills) {
+  // if div already exists for some reason, empty it
+  $('#learn-skills').empty();
+
+  // create new #learn-skills div and append to <body>
+  $('<div>')
+    .attr('id', 'learn-skills')
+    .appendTo('body')
+    .append('<h2>Learn a new skill!</h2>');
+
+  //loop through each returned skill
+  for (var i = 0; i < skills.length; i++) {
+
+    // create new #skill-x div and append to #learn-skills
+    $('<div>')
+      .addClass('skill-block')
+      .attr('id','skill-'+i)
+      .appendTo('#learn-skills');
+
+    // give skill a name
+    $('<p>')
+      .addClass('skill-name')
+      .text(skills[i].name)
+      .appendTo('#skill-'+i);
+
+    // give skill a background image
+    // $('#skill-'+i)
+    //   .css('background-image','url(' + skills[i].photo_url + ')');
+
+    // fade-in the new div
+    $('#learn-skills')
+      .css({ display: "block", opacity: 0})
+      .animate({ opacity: 1 }, 400);
+
+  }
+
 };
