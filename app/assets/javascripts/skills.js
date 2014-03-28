@@ -111,6 +111,12 @@ Recipes.renderKnownRecipes = function(recipes) {
     // $('#all-skills').animate({ height: 0, display: "none" }, 700);
   }
 
+    $('.recipe-tile').hover(function() {
+        $(this).stop().animate({"opacity": 0.9}, 30);
+    },function() {
+        $(this).stop().animate({"opacity": 1}, 30);
+    });
+
     Skills.getUnknownSkills();
 
 };
@@ -185,5 +191,11 @@ Skills.renderUnknownSkills = function(skills) {
       .css({ display: "block", opacity: 0})
       .animate({ opacity: 1 }, 400);
   }
+
+  $('.skill-block').hover(function() {
+      $(this).stop().animate({"opacity": 0.9}, 30);
+  },function() {
+      $(this).stop().animate({"opacity": 1}, 30);
+  });
 
 };
