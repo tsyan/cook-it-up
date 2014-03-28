@@ -4,7 +4,7 @@ var Skills = Skills || { knownSkills: [], unknownSkills: ["1","2","3","4","5"] }
 $(document).ready(function() {
   $('.skill-button').click(Skills.selectSkill);
   $('#skills-done-button').click(Recipes.getKnownRecipes);
-  // $('#skills-done-button').click(Skills.getUnknownSkills);
+  $('#skills-done-button').click(Skills.getUnknownSkills);
 });
 
 Skills.selectSkill = function(event) {
@@ -30,34 +30,47 @@ Skills.addSkill = function(button) {
 
 Skills.removeSkill = function(button) {
   var unknown_skill_id = button.attr('data-skill-id'),
-      known_skill_position = $.inArray(button.attr('data-skill-id'), Skills.knownSkills);
+      known_skill_position = $.inArray(unknown_skill_id, Skills.knownSkills);
   Skills.knownSkills.splice(known_skill_position, 1);
   Skills.unknownSkills.push(unknown_skill_id);
   console.log("Skills.knownSkills:" + Skills.knownSkills);
   console.log("Skills.unknownSkills:" + Skills.unknownSkills);
 };
 
-Skills.renderUnknownSkills = function(event) {
+Skills.getUnknownSkills = function(event) {
   event.preventDefault();
-
-  return false;
+  $.ajax({
+      url: '/unknown_skills',
+      type: 'POST',
+      dataType: 'JSON',
+      data: {unknown_skills: Skills.unknownSkills}
+    })
+    .done(function(data) {
+      console.log("success! retrieved unknown skills");
+      console.log(data);
+      // Recipes.renderKnownRecipes(data);
+    })
+    .fail(function() {
+      console.log("error! could not retrieve skills");
+    });
+    return false;
 };
 
 Recipes.getKnownRecipes = function(event) {
   event.preventDefault();
   $.ajax({
-    url: '/skills',
+    url: '/known_recipes',
     type: 'POST',
     dataType: 'JSON',
     data: {known_skills: Skills.knownSkills}
   })
   .done(function(data) {
-    console.log("success");
+    console.log("success! retrieved known recipes");
     console.log(data);
     Recipes.renderKnownRecipes(data);
   })
   .fail(function() {
-    console.log("error");
+    console.log("error! could not retrieve recipes");
   });
   return false;
 };
