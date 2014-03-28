@@ -3,18 +3,16 @@ body {
   font-family: 'Josefin Sans';
 }
 
-.container {
-  /*width: 1010px;*/
-}
-
 h1 {
-  font-family: 'Berkshire Swash', 'Helvetica Neue', 'Georgia';
-  font-size: 80px;
+  font-family: 'Berkshire Swash', 'Georgia';
+  font-size: 100px;
   letter-spacing: -1.8px;
+  color: rgb(210, 50, 45);
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
 }
 
 h1 span {
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 h2#instructions {
@@ -60,6 +58,10 @@ div.skill-div {
   padding: 4px 24px 14px 24px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.btn-danger, .btn-danger:focus, .btn-danger:hover {
+  background-color: rgb(210, 50, 45);
 }
 
 .btn-primary:focus, .btn-primary:hover {
