@@ -1,5 +1,5 @@
 CookItUp::Application.routes.draw do
-  root to: 'recipes#home'
+  root to: 'skills#index'
 
   get 'recipes', to: 'recipes#index'
   get 'skills', to: 'skills#index'
