@@ -69,11 +69,17 @@ Recipes.renderKnownRecipes = function(recipes) {
   // loop through each returned recipe
   for (var i = 0; i < recipes.length; i++) {
 
+    // create new link to recipe url
+    $('<a>')
+      .attr('id','recipe-'+i+'url')
+      .attr('href', recipes[i].url)
+      .appendTo('#try-recipes');
+
     // create new #recipe-x div and append to #try-recipes
     $('<div>')
       .addClass('recipe-square')
       .attr('id','recipe-'+i)
-      .appendTo('#try-recipes');
+      .appendTo('#recipe-'+i+'url');
 
     // give recipe a name
     $('<p>')
