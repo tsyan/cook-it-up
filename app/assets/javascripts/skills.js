@@ -1,9 +1,10 @@
-var Skills = Skills || { currentSkills: [] },
+var Skills = Skills || { knownSkills: [] },
     Recipes = Recipes || {};
 
 $(document).ready(function() {
   $('.skill-button').click(Skills.selectSkill);
-  $('#skills-done-button').click(Recipes.getCurrentRecipes);
+  $('#skills-done-button').click(Recipes.getKnownRecipes);
+  // $('#skills-done-button').click(Skills.getUnknownSkills);
 });
 
 Skills.selectSkill = function(event) {
@@ -20,28 +21,28 @@ Skills.selectSkill = function(event) {
 
 Skills.addSkill = function(button) {
   var this_skill = button.attr('data-skill-id');
-  Skills.currentSkills.push(this_skill);
-  console.log("Skills.currentSkills:" + Skills.currentSkills);
+  Skills.knownSkills.push(this_skill);
+  console.log("Skills.knownSkills:" + Skills.knownSkills);
 };
 
 Skills.removeSkill = function(button) {
-  var this_skill = $.inArray(button.attr('data-skill-id'), Skills.currentSkills);
-  Skills.currentSkills.splice(this_skill, 1);
-  console.log("Skills.currentSkills:" + Skills.currentSkills);
+  var this_skill = $.inArray(button.attr('data-skill-id'), Skills.knownSkills);
+  Skills.knownSkills.splice(this_skill, 1);
+  console.log("Skills.knownSkills:" + Skills.knownSkills);
 };
 
-Recipes.getCurrentRecipes = function(event) {
+Recipes.getKnownRecipes = function(event) {
   event.preventDefault();
   $.ajax({
     url: '/skills',
     type: 'POST',
     dataType: 'JSON',
-    data: {known_skills: Skills.currentSkills}
+    data: {known_skills: Skills.knownSkills}
   })
   .done(function(data) {
     console.log("success");
     console.log(data);
-    Recipes.renderCurrentRecipes(data);
+    Recipes.renderKnownRecipes(data);
   })
   .fail(function() {
     console.log("error");
@@ -49,7 +50,7 @@ Recipes.getCurrentRecipes = function(event) {
   return false;
 };
 
-Recipes.renderCurrentRecipes = function(recipes) {
+Recipes.renderKnownRecipes = function(recipes) {
   // if div already exists for some reason, empty it
   $('#try-recipes').empty();
 
