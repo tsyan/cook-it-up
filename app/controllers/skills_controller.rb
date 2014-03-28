@@ -5,6 +5,8 @@ class SkillsController < ApplicationController
   end
 
   def display
+    @skills = Skill.find(params[:unknown_skills])
+    render json: @skills
   end
 
 end
