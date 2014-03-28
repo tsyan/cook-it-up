@@ -63,8 +63,19 @@ Recipes.renderKnownRecipes = function(recipes) {
   // create new #try-recipes div and append to <body>
   $('<div>')
     .attr('id','try-recipes')
-    .appendTo('body')
-    .append('<h2>Try a recipe!</h2>');
+    .appendTo('body');
+
+  // create new section header
+  $('<h2>')
+    .addClass('section-header')
+    .text('Try a recipe')
+    .appendTo('#try-recipes');
+
+  // create new section description
+  $('<h3>')
+    .addClass('section-desc')
+    .text("Here's everything you can cook with your current skills.")
+    .appendTo('#try-recipes');
 
   // loop through each returned recipe
   for (var i = 0; i < recipes.length; i++) {
@@ -134,8 +145,19 @@ Skills.renderUnknownSkills = function(skills) {
   // create new #learn-skills div and append to <body>
   $('<div>')
     .attr('id', 'learn-skills')
-    .appendTo('body')
-    .append('<h2>Learn a new skill!</h2>');
+    .appendTo('body');
+
+  // create new section header
+  $('<h2>')
+    .addClass('section-header')
+    .text('Learn a new skill')
+    .appendTo('#learn-skills');
+
+  // create new section description
+  $('<h3>')
+    .addClass('section-desc')
+    .text("Each skill unlocks new recipes.")
+    .appendTo('#learn-skills');
 
   //loop through each returned skill
   for (var i = 0; i < skills.length; i++) {
@@ -162,18 +184,18 @@ Skills.renderUnknownSkills = function(skills) {
     $('#skill-'+i)
       .css('background-image','url(' + skills[i].photo_url + ')');
 
-    // fade-in the new div
-    $('#learn-skills')
-      .css({ display: "block", opacity: 0})
-      .animate({ opacity: 1 }, 400);
+  }
 
-   }
+  // fade-in the new div
+  $('#learn-skills')
+    .css({ display: "block", opacity: 0})
+    .animate({ opacity: 1 }, 400);
 
-   // set event listener for hovering over skill block
-   // this isn't working at all yet
-   $('.skill-block').hover(function(event) {
-     // debugger
-     $(event.target.firstChild).animate({ 'color': 'red' }, 500);
-   });
+  // set event listener for hovering over skill block
+  // this isn't working at all yet
+  $('.skill-block').hover(function(event) {
+    // debugger
+    $(event.target.firstChild).animate({ 'color': 'red' }, 500);
+  });
 
 };
