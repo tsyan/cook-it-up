@@ -38,6 +38,8 @@ Skills.removeSkill = function(button) {
 };
 
 Recipes.getKnownRecipes = function(event) {
+  $('#learn-skills').empty();
+  $('#unlocked-recipes').empty();
   event.preventDefault();
   $.ajax({
     url: '/known_recipes',
@@ -230,7 +232,7 @@ Skills.getNewRecipes = function() {
   .done(function(data) {
     console.log("success! retrieved newly unlocked recipes");
     console.log(data);
-    // Recipes.renderKnownRecipes(data);
+    Recipes.renderNewRecipes(data);
   })
   .fail(function() {
     console.log("error! could not retrieve newly unlocked recipes");
@@ -238,3 +240,67 @@ Skills.getNewRecipes = function() {
   return false;
 };
 
+Recipes.renderNewRecipes = function(recipes) {
+  // if div already exists for some reason, empty it
+  $('#unlocked-recipes').empty();
+
+  // create new #unlocked-recipes div
+  $('<div>')
+    .attr('id','unlocked-recipes')
+    .insertAfter('#learn-skills');
+
+  // create new section header
+  // $('<h2>')
+  //   .addClass('section-header')
+  //   .text('You can learn more about this skill here.')
+  //   .appendTo('#unlocked-recipes');
+
+  // create another section header
+  $('<h2>')
+    .addClass('section-header')
+    .text('Congratulations!')
+    .appendTo('#unlocked-recipes');
+
+  // create new section description
+  $('<h3>')
+    .addClass('section-desc')
+    .text('You just unlocked these new recipes. Why not give them a try?')
+    .appendTo('#unlocked-recipes');
+
+  // loop through each returned recipe
+  for (var i = 0; i < recipes.length; i++) {
+
+    // create new link to recipe url and append to #try-recipes
+    $('<a>')
+      .attr('id','unlocked-recipe-'+i+'-url')
+      .attr('href', recipes[i].url)
+      .appendTo('#unlocked-recipes');
+
+    // create new #recipe-x div and append to #recipe-x-url div
+    $('<div>')
+      .addClass('recipe-tile')
+      .attr('id','unlocked-recipe-'+i)
+      .appendTo('#unlocked-recipe-'+i+'-url');
+
+    // give recipe a name
+    $('<div>')
+      .addClass('recipe-name')
+      .text(recipes[i].name)
+      .appendTo('#unlocked-recipe-'+i);
+
+    // give recipe a background image
+    $('#unlocked-recipe-'+i)
+      .css('background-image','url('+recipes[i].photo_url+')');
+
+  }
+
+    // fade-in the new div
+    $('#unlocked-recipes')
+      .css({ display: "block", opacity: 0 })
+      .animate({ opacity: 1, height: 'auto' }, 400);
+
+    // scroll to the new div
+    $('html, body').animate({
+            scrollTop: $('#unlocked-recipes').offset().top
+        }, 2000);
+};
