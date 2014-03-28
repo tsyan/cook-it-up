@@ -1,14 +1,16 @@
 body {
   padding-left: 20px;
   font-family: 'Josefin Sans';
+  background-color: #575169;
+  color: white;
 }
 
 h1 {
   font-family: 'Berkshire Swash', 'Georgia';
   font-size: 100px;
   letter-spacing: -1.8px;
-  color: rgb(210, 50, 45);
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+  color: #f5802d;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 h1 span {
@@ -43,7 +45,6 @@ div#all-skills {
 
 div.skill-div {
   display: inline-block;
-  /*margin-right: 20px;*/
 }
 
 #skills-done-button {
@@ -61,7 +62,8 @@ div.skill-div {
 }
 
 .btn-danger, .btn-danger:focus, .btn-danger:hover {
-  background-color: rgb(210, 50, 45);
+  background-color: #f5802d;
+  border-color: #f36f11;
 }
 
 .btn-primary:focus, .btn-primary:hover {
