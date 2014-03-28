@@ -48,6 +48,7 @@ div.skill-div {
   overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   background-color: LightGray;
   box-sizing: border-box;
   width: 225px;
@@ -65,6 +66,7 @@ div.skill-div {
   overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   background-color: LightGray;
   box-sizing: border-box;
   width: 90%;
@@ -102,6 +104,6 @@ div.skill-div {
   width: 100px;
 }
 
-a {
+a, a:hover, a:focus {
   text-decoration: none;
 }
