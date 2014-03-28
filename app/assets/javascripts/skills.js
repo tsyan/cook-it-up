@@ -250,10 +250,10 @@ Recipes.renderNewRecipes = function(recipes) {
     .insertAfter('#learn-skills');
 
   // create new section header
-  // $('<h2>')
-  //   .addClass('section-header')
-  //   .text('You can learn more about this skill here.')
-  //   .appendTo('#unlocked-recipes');
+  $('<h2>')
+    .addClass('section-header')
+    .append("You can learn more about this skill <a href='#'>here</a>.")
+    .appendTo('#unlocked-recipes');
 
   // create another section header
   $('<h2>')
