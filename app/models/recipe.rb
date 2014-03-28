@@ -12,6 +12,13 @@ class Recipe < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   def self.find_recipes_that_require_any_of_these_skills(*known_skill_ids)
+
+    # the crazy sql way (number of queries is always 2)
+    Recipe.joins(:skills)
+          .merge(Skill.where(id: known_skill_ids))
+          .where("recipes.id NOT IN (?)", Recipe.joins(:skills).merge(Skill.where("skills.id NOT IN (?)", known_skill_ids)).uniq.pluck(:id)).uniq
+
+    # the more-understandable ruby way (number of queries scales linearly)
     self.select do |recipe|
       recipe.skill_ids.all? do |skill_id|
         known_skill_ids.include?(skill_id)
