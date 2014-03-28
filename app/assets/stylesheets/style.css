@@ -43,7 +43,7 @@ div.skill-div {
   display:none;
 }
 
-.recipe-square {
+.recipe-tile {
   display: inline-block;
   overflow: hidden;
   background-position: center;

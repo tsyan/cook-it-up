@@ -69,20 +69,20 @@ Recipes.renderKnownRecipes = function(recipes) {
   // loop through each returned recipe
   for (var i = 0; i < recipes.length; i++) {
 
-    // create new link to recipe url
+    // create new link to recipe url and append to #try-recipes
     $('<a>')
-      .attr('id','recipe-'+i+'url')
+      .attr('id','recipe-'+i+'-url')
       .attr('href', recipes[i].url)
       .appendTo('#try-recipes');
 
-    // create new #recipe-x div and append to #try-recipes
+    // create new #recipe-x div and append to #recipe-x-url div
     $('<div>')
-      .addClass('recipe-square')
+      .addClass('recipe-tile')
       .attr('id','recipe-'+i)
-      .appendTo('#recipe-'+i+'url');
+      .appendTo('#recipe-'+i+'-url');
 
     // give recipe a name
-    $('<p>')
+    $('<div>')
       .addClass('recipe-name')
       .text(recipes[i].name)
       .appendTo('#recipe-'+i);
@@ -93,10 +93,19 @@ Recipes.renderKnownRecipes = function(recipes) {
   }
 
   // fade-in the new div
-  $('#try-recipes').css({ display: "block", opacity: 0 }).animate({ opacity: 1 }, 400);
+  $('#try-recipes')
+    .css({ display: "block", opacity: 0 })
+    .animate({ opacity: 1 }, 400);
 
   // collapse the old div
-  $('#all-skills').animate({height: 0, display: "none"}, 700);
+  $('#all-skills').animate({ height: 0, display: "none" }, 700);
+
+  // set event listener for hovering over recipe tile
+  // this isn't working at all yet
+  $('.recipe-tile').hover(function(event) {
+    // debugger
+    $(event.target.firstChild).animate({ 'color': 'red' }, 500);
+  });
 };
 
 Skills.getUnknownSkills = function(event) {
@@ -131,14 +140,20 @@ Skills.renderUnknownSkills = function(skills) {
   //loop through each returned skill
   for (var i = 0; i < skills.length; i++) {
 
-    // create new #skill-x div and append to #learn-skills
+    // create new link to skill url and append to #learn-skills
+    $('<a>')
+      .attr('id','skill-'+i+'-url')
+      .attr('href', skills[i].url)
+      .appendTo('#learn-skills');
+
+    // create new #skill-x div and append to #skill-x-url div
     $('<div>')
       .addClass('skill-block')
       .attr('id','skill-'+i)
-      .appendTo('#learn-skills');
+      .appendTo('#skill-'+i+'-url');
 
     // give skill a name
-    $('<p>')
+    $('<div>')
       .addClass('skill-name')
       .text(skills[i].name)
       .appendTo('#skill-'+i);
@@ -151,6 +166,13 @@ Skills.renderUnknownSkills = function(skills) {
     $('#learn-skills')
       .css({ display: "block", opacity: 0})
       .animate({ opacity: 1 }, 400);
+
+    // set event listener for hovering over skill block
+    // this isn't working at all yet
+    $('.skill-block').hover(function(event) {
+      // debugger
+      $(event.target.firstChild).animate({ 'color': 'red' }, 500);
+    });
 
   }
 
