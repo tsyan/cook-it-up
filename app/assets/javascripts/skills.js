@@ -20,19 +20,19 @@ Skills.selectSkill = function(event) {
 };
 
 Skills.addSkill = function(button) {
-  var this_skill_known = button.attr('data-skill-id'),
-      this_skill_unknown = $.inArray(this_skill_known, Skills.unknownSkills);
-  Skills.knownSkills.push(this_skill_known);
-  Skills.unknownSkills.splice(this_skill_unknown,1);
+  var known_skill_id = button.attr('data-skill-id'),
+      unknown_skill_position = $.inArray(known_skill_id, Skills.unknownSkills);
+  Skills.knownSkills.push(known_skill_id);
+  Skills.unknownSkills.splice(unknown_skill_position,1);
   console.log("Skills.knownSkills:" + Skills.knownSkills);
   console.log("Skills.unknownSkills:" + Skills.unknownSkills);
 };
 
 Skills.removeSkill = function(button) {
-  var this_skill_known = $.inArray(button.attr('data-skill-id'), Skills.knownSkills),
-      this_skill_unknown = button.attr('data-skill-id');
-  Skills.knownSkills.splice(this_skill_known, 1);
-  Skills.unknownSkills.push(this_skill_unknown);
+  var unknown_skill_id = button.attr('data-skill-id'),
+      known_skill_position = $.inArray(button.attr('data-skill-id'), Skills.knownSkills);
+  Skills.knownSkills.splice(known_skill_position, 1);
+  Skills.unknownSkills.push(unknown_skill_id);
   console.log("Skills.knownSkills:" + Skills.knownSkills);
   console.log("Skills.unknownSkills:" + Skills.unknownSkills);
 };
