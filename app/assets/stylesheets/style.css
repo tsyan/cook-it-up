@@ -120,6 +120,15 @@ div.skill-div {
   text-shadow: 2px 2px 5px rgba(0,0,0,0.9), 5px 5px 19px rgba(0,0,0,0.7);
 }
 
+.num-unlocked-recipes {
+  font-size: 34px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+  margin-top: -10px;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.9), 2px 2px 5px rgba(0,0,0,0.7);
+}
+
 .hidden {
   display:none;
 }

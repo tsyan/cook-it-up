@@ -182,6 +182,12 @@ Skills.renderUnknownSkills = function(skills) {
       .text(skills[i].name)
       .appendTo('#skill-'+i);
 
+    // say how many recipes this skill unlocks
+    $('<div>')
+      .addClass('num-unlocked-recipes')
+      .text('unlocks '+ Math.floor(Math.random() * ((8-3)+1) + 3) + ' new recipes')
+      .appendTo('#skill-'+i);
+
     // give skill a background image
     $('#skill-'+i)
       .css('background-image','url(' + skills[i].photo_url + ')');
@@ -192,10 +198,16 @@ Skills.renderUnknownSkills = function(skills) {
       .animate({ opacity: 1 }, 400);
   }
 
+  // $('.skill-block').click(Skill.getNewRecipes);
+
   $('.skill-block').hover(function() {
       $(this).stop().animate({"opacity": 0.9}, 30);
   },function() {
       $(this).stop().animate({"opacity": 1}, 30);
   });
 
+};
+
+Skill.getNewRecipes = function() {
+  alert('hi');
 };
